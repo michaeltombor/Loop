@@ -13,7 +13,19 @@ passport.use(
             callbackURL: '/auth/google/callback'
         }, 
         (accessToken, refreshToken, profile, done) => {
-            new User({googleId: profile.id}).save(); //creates new instance of user. ".save" then saves it to MongoDB
-        }
-    )
-);
+            User.findOne({ googleId: profile.id })
+                .then( (existingUser) => {
+                    if (existingUser) {
+                        //already have a user record
+                        done(null, existingUser);
+                    } else {
+                        //we don't have a user record. Create new record
+                        //creates new instance of user. ".save" then saves it to MongoDB
+                        new User({googleId: profile.id})
+                            .save()
+                            .then(user => done(null, user));
+                    }
+                })
+            }
+        )
+    );
