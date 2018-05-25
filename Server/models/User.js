@@ -1,3 +1,5 @@
+//MONGOOSE MODEL CLASS
+
 const mongoose = require('mongoose');
 const {Schema } = mongoose; //  Schema = mongoose.Schema;
 
