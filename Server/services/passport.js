@@ -5,6 +5,26 @@ const keys = require('../config/keys');
 
 const User = mongoose.model('users'); //we are pulling the model out of mongoose here
 
+//takes user model and generate a unique id for passport to stuff into a cookie
+passport.serializeUser((user, done) =>{
+    //the below user.id is not the google profile ID
+    //using the mongo id helps when users signs in with different ids. 
+    //ie. facebook or google, or github
+    
+    //this line stuffs the user.id into the cookie
+    done(null, user.id); 
+});
+//takes in a user id into a mongoose model instance
+//we search over database and when we find the user, we call done
+passport.deserializeUser((id, done) => {
+   //We capitalize User because it is a model class
+   //We pass in the id and it finds that user
+   User.findById(id)
+    .then(user => {
+        done(null, user);
+    });
+});
+
 passport.use(
     new GoogleStrategy(
         {
