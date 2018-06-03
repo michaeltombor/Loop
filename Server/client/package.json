@@ -4,7 +4,7 @@
   "private": true,
   "proxy": {
     "/auth/google" : {
-      "target": "https://node-react-fullstack-michaeltombor.c9users.io:8081"
+      "target": "http://node-react-fullstack-michaeltombor.c9users.io:8081"
     }
   },
   "dependencies": {
