@@ -27,5 +27,6 @@ app.use(
 
 require('./routes/authRoutes')(app);
 
-const PORT = process.env.PORT;
-app.listen(PORT);
+app.listen(8081, process.env.IP, function() {
+  console.log("server has started");
+});
