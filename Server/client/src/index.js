@@ -1,8 +1,9 @@
-import materializeCSS from 'materialize-css/dist/css/materialize.min.css';
+import 'materialize-css/dist/css/materialize.min.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
+import reduxThunk from 'redux-thunk';
 
 import App from './components/App';
 import reducers from './reducers';
@@ -11,7 +12,7 @@ import reducers from './reducers';
 //The first argument are the reducers
 //Second argument is the initial state
 //Third is the applyMiddleware 
-const store = createStore(reducers, {}, applyMiddleware());
+const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 
 //takes two arguments. Root component & where we are rendering component inside of DOM
 ReactDOM.render(
