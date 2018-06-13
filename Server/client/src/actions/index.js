@@ -3,7 +3,8 @@ import { FETCH_USER } from './types';
 
 const fetchUser = () => {
   return function(dispatch) {
-    axios.get('/api/user')
+    //replace with relative path /api/user
+    axios.get('https://node-react-fullstack-michaeltombor.c9users.io:8081/api/user')
       .then(res => dispatch({ type: FETCH_USER, payload: res }))
   }
 };
