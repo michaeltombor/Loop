@@ -1,12 +1,11 @@
-import React, { Component } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
-import { connect } from 'react-redux';
-import * as actions from '../actions';
-
-import Header from './Header';
+import React, { Component } from "react";
+import { BrowserRouter, Route } from "react-router-dom";
+import { connect } from "react-redux";
+import * as actions from "../actions";
+import Landing from "./Landing";
+import Header from "./Header";
 const Dashboard = () => <h2>Dashboard</h2>;
 const SurveyNew = () => <h2>SurveyNew</h2>;
-const Landing = () => <h2>Landing</h2>;
 
 class App extends Component {
   //The instant this component has been rendered onto the screen, go attempt to fetch current user
@@ -28,8 +27,11 @@ class App extends Component {
         </BrowserRouter>
       </div>
     );
-  };
+  }
 }
 //first argument is map state to props, we aren't using it, so putting null
 //second argument is all of the action creators we want to wire up
-export default connect(null, actions)(App);
+export default connect(
+  null,
+  actions
+)(App);
